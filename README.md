@@ -5,25 +5,25 @@ Home page with featured news, category filtering, search, and news grid.
 
 **Technologies Used**
 
-HTML5 – Semantic markup and structure
+1. HTML5 – Semantic markup and structure
 
-Tailwind CSS – Utility-first styling for rapid UI development
+2. Tailwind CSS – Utility-first styling for rapid UI development
 
-daisyUI – Prebuilt Tailwind components for consistency and speed
+3. DaisyUI – Prebuilt Tailwind components for consistency and speed
 
-Vanilla JavaScript – DOM manipulation, filtering, search, and routing logic
+4. Vanilla JavaScript – DOM manipulation, filtering, search, and routing logic
 
 **Although no frameworks are used, the project follows a component mindset:**
 
-Navbar
+1. Navbar
 
-Featured section
+2. Featured section
 
-News cards
+3. News cards
 
-Details view
+4. Details view
 
-Each section has a clear responsibility, improving readability and scalability.
+5. Each section has a clear responsibility, improving readability and scalability.
 
 **Features Implemented**
 
