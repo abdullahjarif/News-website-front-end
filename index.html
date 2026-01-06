@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prothom Alo Newspaper</title>
+    <!-- Tailwind CSS & DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 shadow-md bg-white">
+      <div class="container mx-auto px-4">
+        <!-- Top bar with date and breaking news -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center py-2 border-b"
+        >
+          <div class="text-sm text-gray-600">
+            <i class="far fa-calendar-alt mr-2"></i>
+            <span id="current-date">Monday, January 1, 2023</span>
+          </div>
+          <div
+            class="breaking-news bg-red-50 px-4 py-1 rounded-md my-2 md:my-0"
+          >
+            <span class="font-bold text-red-600 mr-2"
+              ><i class="fas fa-bolt"></i> BREAKING:</span
+            >
+            <span class="text-sm" id="breaking-news-text"
+              >National Budget 2023-24 to be announced today</span
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <button class="btn btn-ghost btn-sm" id="theme-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button class="btn btn-ghost btn-sm">
+              <i class="fas fa-user"></i> Sign In
+            </button>
+          </div>
+        </div>
+
+        <!-- Logo and navigation -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center py-4"
+        >
+          <!-- Logo -->
+          <div class="mb-4 md:mb-0">
+            <a
+              href="index.html"
+              class="text-3xl font-bold text-red-600 flex items-center"
+            >
+              <i class="fas fa-newspaper mr-2"></i>
+              <span>Prothom <span class="text-blue-600">Alo</span></span>
+            </a>
+            <p class="text-xs text-gray-500">First Light, First News</p>
+          </div>
+
+          <!-- Search bar -->
+          <div class="w-full md:w-1/3 mb-4 md:mb-0">
+            <div class="form-control">
+              <div class="input-group flex gap-4">
+                <input
+                  type="text"
+                  placeholder="Search news..."
+                  class="input input-bordered w-full"
+                  id="search-input"
+                />
+                <button class="btn btn-square" id="search-btn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social icons -->
+          <div class="flex space-x-3">
+            <a href="#" class="text-blue-600"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="text-sky-500"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-red-500"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="text-orange-500"><i class="fas fa-rss"></i></a>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="border-t border-b">
+          <div class="flex flex-col md:flex-row">
+            <a
+              href="./index.html"
+              class="py-3 px-4 font-medium hover:bg-red-50 hover:text-red-600 border-b md:border-b-0 md:border-r"
+            >
+              <i class="fas fa-home mr-2"></i> Home
+            </a>
+            <a
+              href="#"
+              class="py-3 px-4 font-medium hover:bg-red-50 hover:text-red-600 border-b md:border-b-0 md:border-r category-link"
+              data-category="national"
+            >
+              <i class="fas fa-flag mr-2"></i> National
+            </a>
+            <a
+              href="#"
+              class="py-3 px-4 font-medium hover:bg-red-50 hover:text-red-600 border-b md:border-b-0 md:border-r category-link"
+              data-category="international"
+            >
+              <i class="fas fa-globe mr-2"></i> International
+            </a>
+            <a
+              href="#"
+              class="py-3 px-4 font-medium hover:bg-red-50 hover:text-red-600 border-b md:border-b-0 md:border-r category-link"
+              data-category="sports"
+            >
+              <i class="fas fa-futbol mr-2"></i> Sports
+            </a>
+            <a
+              href="#"
+              class="py-3 px-4 font-medium hover:bg-red-50 hover:text-red-600 border-b md:border-b-0 md:border-r category-link"
+              data-category="technology"
+            >
+              <i class="fas fa-laptop-code mr-2"></i> Technology
+            </a>
+            <a
+              href="#"
+              class="py-3 px-4 font-medium hover:bg-red-50 hover:text-red-600 border-b md:border-b-0 md:border-r category-link"
+              data-category="business"
+            >
+              <i class="fas fa-chart-line mr-2"></i> Business
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6">
+      
+      <div id="page-content">
+       
+        <div id="home-page">
+          
+          <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b flex items-center">
+              <i class="fas fa-star text-red-500 mr-2"></i> Featured News
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              
+              <div class="lg:col-span-2">
+                <div class="card bg-base-100 shadow-xl news-card">
+                  <figure class="h-80 overflow-hidden">
+                    <img
+                      src="./images/banner_1.png"
+                      alt="National Budget"
+                      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <div class="flex items-center justify-between mb-2">
+                      <span
+                        class="badge badge-lg bg-red-600 text-white border-0 category-badge"
+                        >National</span
+                      >
+                      <span class="text-gray-500 text-sm"
+                        ><i class="far fa-clock mr-1"></i> 2 hours ago</span
+                      >
+                    </div>
+                    <h3 class="card-title news-title text-2xl">
+                      <a
+                        href="#"
+                        class="hover:text-red-600 transition-colors news-details-link"
+                        data-id="1"
+                        >National Budget 2023-24 Focuses on Inflation Control
+                        and Social Safety Nets</a
+                      >
+                    </h3>
+                    <p class="text-gray-600">
+                      The government has proposed a Tk 7,61,785 crore national
+                      budget for the fiscal year 2023-24, with a strong emphasis
+                      on controlling inflation and expanding social safety
+                      programs.
+                    </p>
+                    <div class="card-actions justify-end mt-4">
+                      <button
+                        class="btn btn-outline btn-sm news-details-link"
+                        data-id="1"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Side featured news -->
+              <div class="space-y-6">
+                <div class="card bg-base-100 shadow-md news-card">
+                  <div class="card-body p-5">
+                    <div class="flex items-center justify-between mb-2">
+                      <span
+                        class="badge bg-blue-600 text-white border-0 category-badge"
+                        >International</span
+                      >
+                      <span class="text-gray-500 text-sm">4 hours ago</span>
+                    </div>
+                    <h4 class="card-title">
+                      <a
+                        href="#"
+                        class="hover:text-red-600 transition-colors news-details-link"
+                        data-id="2"
+                        >Global Climate Summit Reaches Landmark Agreement</a
+                      >
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      World leaders have agreed to a new climate pact with
+                      stricter emissions targets.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card bg-base-100 shadow-md news-card">
+                  <div class="card-body p-5">
+                    <div class="flex items-center justify-between mb-2">
+                      <span
+                        class="badge bg-green-600 text-white border-0 category-badge"
+                        >Sports</span
+                      >
+                      <span class="text-gray-500 text-sm">6 hours ago</span>
+                    </div>
+                    <h4 class="card-title">
+                      <a
+                        href="#"
+                        class="hover:text-red-600 transition-colors news-details-link"
+                        data-id="3"
+                        >Bangladesh Cricket Team Wins Series Against England</a
+                      >
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Historic victory at home ground with outstanding
+                      performance by new players.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card bg-base-100 shadow-md news-card">
+                  <div class="card-body p-5">
+                    <div class="flex items-center justify-between mb-2">
+                      <span
+                        class="badge bg-purple-600 text-white border-0 category-badge"
+                        >Technology</span
+                      >
+                      <span class="text-gray-500 text-sm">1 day ago</span>
+                    </div>
+                    <h4 class="card-title">
+                      <a
+                        href="#"
+                        class="hover:text-red-600 transition-colors news-details-link"
+                        data-id="4"
+                        >AI Breakthrough Revolutionizes Medical Diagnostics</a
+                      >
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      New AI system can detect diseases with 99% accuracy, say
+                      researchers.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Trending/Popular Section -->
+          <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b flex items-center">
+              <i class="fas fa-fire text-orange-500 mr-2"></i> Trending Now
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="card bg-base-100 shadow-md news-card">
+                <div class="card-body p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="badge bg-red-600 text-white border-0 text-xs"
+                      >National</span
+                    >
+                    <span class="text-gray-500 text-xs">3 hours ago</span>
+                  </div>
+                  <h4 class="card-title text-lg">
+                    <a
+                      href="#"
+                      class="hover:text-red-600 transition-colors news-details-link"
+                      data-id="5"
+                      >New Metro Rail Line Inaugurated in Dhaka</a
+                    >
+                  </h4>
+                  <div class="flex items-center mt-3 text-orange-500">
+                    <i class="fas fa-fire mr-1"></i>
+                    <span class="text-sm font-medium">Trending</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card bg-base-100 shadow-md news-card">
+                <div class="card-body p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="badge bg-blue-600 text-white border-0 text-xs"
+                      >Business</span
+                    >
+                    <span class="text-gray-500 text-xs">5 hours ago</span>
+                  </div>
+                  <h4 class="card-title text-lg">
+                    <a
+                      href="#"
+                      class="hover:text-red-600 transition-colors news-details-link"
+                      data-id="6"
+                      >Stock Market Hits All-Time High</a
+                    >
+                  </h4>
+                  <div class="flex items-center mt-3 text-orange-500">
+                    <i class="fas fa-fire mr-1"></i>
+                    <span class="text-sm font-medium">Trending</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card bg-base-100 shadow-md news-card">
+                <div class="card-body p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="badge bg-green-600 text-white border-0 text-xs"
+                      >Sports</span
+                    >
+                    <span class="text-gray-500 text-xs">1 day ago</span>
+                  </div>
+                  <h4 class="card-title text-lg">
+                    <a
+                      href="#"
+                      class="hover:text-red-600 transition-colors news-details-link"
+                      data-id="7"
+                      >Football Transfer Window: Major Signings Expected</a
+                    >
+                  </h4>
+                  <div class="flex items-center mt-3 text-orange-500">
+                    <i class="fas fa-fire mr-1"></i>
+                    <span class="text-sm font-medium">Trending</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card bg-base-100 shadow-md news-card">
+                <div class="card-body p-5">
+                  <div class="flex items-center justify-between mb-2">
+                    <span
+                      class="badge bg-purple-600 text-white border-0 text-xs"
+                      >Technology</span
+                    >
+                    <span class="text-gray-500 text-xs">2 days ago</span>
+                  </div>
+                  <h4 class="card-title text-lg">
+                    <a
+                      href="#"
+                      class="hover:text-red-600 transition-colors news-details-link"
+                      data-id="8"
+                      >New Smartphone Features Under-display Camera</a
+                    >
+                  </h4>
+                  <div class="flex items-center mt-3 text-orange-500">
+                    <i class="fas fa-fire mr-1"></i>
+                    <span class="text-sm font-medium">Trending</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- News Grid Section -->
+          <section class="mb-10">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold pb-2 border-b flex items-center">
+                <i class="fas fa-newspaper text-blue-500 mr-2"></i> Latest News
+              </h2>
+
+              <!-- Category Filter -->
+              <div class="dropdown dropdown-end">
+                <div
+                  tabindex="0"
+                  role="button"
+                  class="btn btn-outline btn-sm m-1"
+                >
+                  <i class="fas fa-filter mr-2"></i> Filter by Category
+                </div>
+                <ul
+                  tabindex="0"
+                  class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a class="category-filter" data-category="all"
+                      >All Categories</a
+                    >
+                  </li>
+                  <li>
+                    <a class="category-filter" data-category="national"
+                      >National</a
+                    >
+                  </li>
+                  <li>
+                    <a class="category-filter" data-category="international"
+                      >International</a
+                    >
+                  </li>
+                  <li>
+                    <a class="category-filter" data-category="sports">Sports</a>
+                  </li>
+                  <li>
+                    <a class="category-filter" data-category="technology"
+                      >Technology</a
+                    >
+                  </li>
+                  <li>
+                    <a class="category-filter" data-category="business"
+                      >Business</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- News Grid -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              id="news-grid"
+            >
+              <!-- News cards will be loaded here -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-10">
+              <button class="btn btn-outline btn-wide" id="load-more">
+                <i class="fas fa-redo mr-2"></i> Load More News
+              </button>
+            </div>
+          </section>
+        </div>
+
+        
+        <div id="news-details-page" class="hidden">
+          
+          <div class="mb-6">
+            <button class="btn btn-outline btn-sm" id="back-to-home">
+              <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </button>
+          </div>
+
+          <!-- News details content will be loaded here -->
+          <div id="news-details-content"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-2xl font-bold text-red-600 mb-4">Prothom Alo</h3>
+            <p class="text-gray-600">
+              Bangladesh's leading newspaper bringing you the latest news,
+              analysis, and insights.
+            </p>
+            <div class="flex space-x-4 mt-4">
+              <a href="#" class="text-blue-600"
+                ><i class="fab fa-facebook-f text-xl"></i
+              ></a>
+              <a href="#" class="text-sky-500"
+                ><i class="fab fa-twitter text-xl"></i
+              ></a>
+              <a href="#" class="text-red-500"
+                ><i class="fab fa-youtube text-xl"></i
+              ></a>
+              <a href="#" class="text-orange-500"
+                ><i class="fab fa-instagram text-xl"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+  <span class="footer-title">Categories</span>
+  <a class="link link-hover">National</a>
+  <a class="link link-hover">International</a>
+  <a class="link link-hover">Sports</a>
+  <a class="link link-hover">Technology</a>
+</div>
+
+<div class="flex flex-col gap-2">
+  <span class="footer-title">Company</span>
+  <a class="link link-hover">About us</a>
+  <a class="link link-hover">Contact</a>
+  <a class="link link-hover">Jobs</a>
+  <a class="link link-hover">Press kit</a>
+</div>
+
+<div class="flex flex-col gap-2">
+  <span class="footer-title">Legal</span>
+  <a class="link link-hover">Terms of use</a>
+  <a class="link link-hover">Privacy policy</a>
+  <a class="link link-hover">Cookie policy</a>
+</div>
+
+
+</div>
+<div class="border-t pt-8 mt-8 text-center">
+  <p>Copyright © 2023 - Kazi Abdullah Jarif</p>
+</div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
