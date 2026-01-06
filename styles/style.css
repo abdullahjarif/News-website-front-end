@@ -1,0 +1,49 @@
+/* Custom styles for better typography */
+.news-title {
+  font-family: "Georgia", serif;
+  font-weight: 700;
+}
+
+.news-content {
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+.category-badge {
+  transition: all 0.3s ease;
+}
+
+.category-badge:hover {
+  transform: translateY(-2px);
+}
+
+.news-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Custom color palette */
+:root {
+  --primary-color: #c53030;
+  --secondary-color: #2d3748;
+  --accent-color: #3182ce;
+}
